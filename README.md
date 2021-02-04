@@ -6,7 +6,7 @@
 ## Pasos:
 
 ## 1. Crear imagen de docker con apache airflow
-#### docker build -t img-airlfow .
+#### docker build -t img-airflow .
 
 ## 1.1 Tagger imagen
 #### docker tag img-airflow:latest img-airflow:staging
