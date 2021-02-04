@@ -6,15 +6,14 @@
 ## Pasos:
 
 ## 1. Crear imagen de docker con apache airflow
-#### docker build -t app .
+#### docker build -t img-airlfow .
 
-## 2. Crear contenedor de docker con la imagen previamente creada
+## 1.1 Tagger imagen
+#### docker tag img-airflow:latest img-airflow:staging
 
-####  docker run -it --name airflow -p 3000:8080 app
+## 2. Ejecutar docker compose 
 
-## 3. Iniciar contenedor 
+####  docker-compose -f docker-compose-LocalExecutor.yml up -d
 
-#### docker start airflow
-
-### Visit localhost:3000
+### Visitar: localhost:3000
   
