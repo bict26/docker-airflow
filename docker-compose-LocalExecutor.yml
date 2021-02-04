@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+    postgres:
+        image: postgres:9.6
+        environment:
+            - POSTGRES_USER=airflow
+            - POSTGRES_PASSWORD=airflow
+            - POSTGRES_DB=airflow       
+        logging:
+            options:
+                max-size: 10m
+                max-file: "3"
+
+    webserver:
+        image: img-airflow:staging
+        restart: always
+        depends_on:
+            - postgres
+        environment:
+            - LOAD_EX=n
+            - EXECUTOR=Local
+        logging:
+            options:
+                max-size: 10m
+                max-file: "3"
+        volumes:
+            - ./dags:/usr/local/airflow/dags
+        ports:
+            - "3000:8080"
+        command: webserver
